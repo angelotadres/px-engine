@@ -1,7 +1,7 @@
 # PX-Engine
 
 ## Overview
-PX-Engine is a lightweight C++20 engine designed for **direct pixel manipulation**. It provides a minimalistic API, enabling developers to create pixel-based applications without dealing with low-level graphics complexities.
+PX-Engine is a lightweight C++ 20 engine designed for **direct pixel manipulation**. It provides a minimalistic API, enabling developers to create pixel-based applications without dealing with low-level graphics complexities.
 
 > **Note:** This project is in **active development**, and the API may change over time. Expect updates and improvements in future releases.
 
@@ -9,9 +9,11 @@ PX-Engine is a lightweight C++20 engine designed for **direct pixel manipulation
 
 - **Pixel-Level Drawing:** Easily draw individual pixels with simple API calls.
 - **Modern C++20 Design:** Uses modern C++20 features for efficiency and readability.
-- **Cross-Platform Support:** Works on Windows, macOS, and Linux.
+- **Cross-Platform Support:** Works on **Windows**, **macOS**, and **Linux**.
 - **Pixel Scaling:** Supports rendering at lower resolutions with larger pixel sizes for a retro look.
 - **Minimal API:** A straightforward interface—just inherit from `Engine` and start drawing.
+
+![Mandelbrot Set Visualization Demo](./docs/mandelbrot-demo.png)
 
 ## Getting Started
 
@@ -41,19 +43,43 @@ To build and use PX-Engine, ensure you have:
     cmake --build .
     ```
 
-### Running the Demo
+### Running the Examples
 
-A **demo application** is provided to illustrate how to use PX-Engine. Run it with:
+PX-Engine comes with two example applications:
+
+#### Rotating Square Demo
+
+Demonstrates basic transformations and input handling:
 
 ```bash
-./px-engine-demo
+./px-engine-square
 ```
 
-This creates a window and demonstrates basic pixel drawing.
+**Features:**
+- Uses Bresenham’s line algorithm to draw lines.
+- Applies 2D transformations using GLM.
+
+**Controls:**
+- Press `SPACE` to change the square's color.
+
+#### Mandelbrot Set Visualization Demo
+
+Illustrates pixel-based fractal rendering:
+
+```bash
+./px-engine-mandelbrot
+```
+
+**Features:**
+- Generates a Mandelbrot set visualization.
+- Maps pixels to the complex plane.
+- Interactive pan and zoom controls.
+
+**Controls:**
+- Use `W/A/S/D` to move (pan) the view.
+- Use `UP` and `DOWN` arrows to zoom in and out.
 
 ## Using PX-Engine in Your Project
-
-PX-Engine is designed to be **easy to integrate**. Follow these steps to use it in your project.
 
 1. **Include the Engine API**
     ```cpp
@@ -71,7 +97,6 @@ PX-Engine is designed to be **easy to integrate**. Follow these steps to use it 
         }
 
         void onUpdate(float deltaTime) override {
-            // Draw a white pixel in the center of the window
             drawPixel(getWidth() / 2, getHeight() / 2, Color::White);
         }
     };
@@ -129,4 +154,3 @@ if (isKeyPressed(KeyCode::W)) {
 ## License
 
 PX-Engine is licensed under the **Apache 2.0 License**. See [LICENSE](LICENSE) for details.
-

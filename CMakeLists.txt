@@ -27,7 +27,7 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(glm glfw glad)
 
 # 3) Create the library target: px-engine
-#    - Contains all core .cpp files except demo.cpp
+#    - Contains all core .cpp files except examples
 add_library(px-engine STATIC
         src/engine.cpp
         src/graphics.cpp
@@ -69,10 +69,10 @@ elseif (UNIX)
     )
 endif ()
 
-# 6) Create the executable target: px-engine-app (which contains main())
-add_executable(px-engine-demo
-        examples/demo.cpp
-)
+# 6) Create the executable target for examples
+add_executable(px-engine-square examples/square.cpp)
+add_executable(px-engine-mandelbrot examples/mandelbrot.cpp)
 
 # 7) Link the px-engine library to the executable
-target_link_libraries(px-engine-demo PRIVATE px-engine)
+target_link_libraries(px-engine-square PRIVATE px-engine)
+target_link_libraries(px-engine-mandelbrot PRIVATE px-engine)
