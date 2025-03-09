@@ -127,6 +127,7 @@ Illustrates pixel-based fractal rendering:
 
 - `void run();` → Starts the main loop.
 - `void drawPixel(int x, int y, Color color);` → Draws a pixel at `(x, y)`.
+- `void drawLine(int x1, int y1, int x2, int y2, Color color);` → Draws a line from `(x1, y1)` to `(x2, y2)`.
 - `bool isKeyPressed(KeyCode key) const;` → Checks if a key is pressed.
 - `bool isMousePressed(MouseButton button) const;` → Checks if a mouse button is pressed.
 - `std::pair<double, double> getMousePosition() const;` → Gets the current mouse cursor position.

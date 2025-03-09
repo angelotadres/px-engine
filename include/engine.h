@@ -127,6 +127,30 @@ namespace pxe {
 		void drawPixel(int x, int y, int r, int g, int b);
 
 		/**
+		 * @brief Draws a line on the screen using a `Color` object.
+		 *
+		 * @param x1 X-coordinate of the pixel representing the start of the line.
+		 * @param y1 Y-coordinate of the pixel representing the start of the line.
+		 * @param x2 X-coordinate of the pixel representing the end of the line.
+		 * @param y2 Y-coordinate of the pixel representing the end of the line.
+		 * @param color The color of the line.
+		 */
+		void drawLine(int x1, int y1, int x2, int y2, Color color);
+
+		/**
+		 * @brief Draws a line on the screen using separate RGB components.
+		 *
+		 * @param x1 X-coordinate of the pixel representing the start of the line.
+		 * @param y1 Y-coordinate of the pixel representing the start of the line.
+		 * @param x2 X-coordinate of the pixel representing the end of the line.
+		 * @param y2 Y-coordinate of the pixel representing the end of the line.
+		 * @param r Red component (0-255).
+		 * @param g Green component (0-255).
+		 * @param b Blue component (0-255).
+		 */
+		void drawLine(int x1, int y1, int x2, int y2, int r, int g, int b);
+
+		/**
 		 * @brief Gets the width of the window.
 		 *
 		 * @return The width of the window in pixels.

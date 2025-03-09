@@ -64,7 +64,31 @@ namespace pxe {
 		graphics->setPixel(x, y, r, g, b);
 	}
 
-	void Engine::drawPixel(const int x, const int y, Color c) { graphics->setPixel(x, y, c.r(), c.g(), c.b()); }
+	void Engine::drawPixel(const int x, const int y, const Color color) { graphics->setPixel(x, y, color.r(), color.g(), color.b()); }
+
+	void Engine::drawLine(const int x1, const int y1, const int x2, const int y2, const int r, const int g, const int b) {
+		int x = x1, y = y1;
+		int dx = std::abs(x2 - x), dy = std::abs(y2 - y);
+		int sx = (x < x2) ? 1 : -1, sy = (y < y2) ? 1 : -1;
+		int err = dx - dy;
+
+		while (true) {
+			drawPixel(x, y, r, g, b);
+			if (x == x2 && y == y2)
+				break;
+			int e2 = 2 * err;
+			if (e2 > -dy) {
+				err -= dy;
+				x += sx;
+			}
+			if (e2 < dx) {
+				err += dx;
+				y += sy;
+			}
+		}
+	}
+
+	void Engine::drawLine(const int x1, const int y1, const int x2, const int y2, const Color color) { drawLine(x1, y1, x2, y2, color.r(), color.g(), color.b()); }
 
 	int Engine::getWindowWidth() const { return window->getWidth(); }
 

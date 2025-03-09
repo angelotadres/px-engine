@@ -5,7 +5,7 @@
  * The square is centered in the window and rotates over time.
  *
  * Features:
- * - Uses Bresenham’s line algorithm to draw lines.
+ * - Uses Bresenham’s line algorithm to draw lines (provided by the engine).
  * - Applies 2D transformations using GLM (rotation and translation).
  * - Changes color when the space key is pressed.
  * - Uses delta time to ensure smooth rotation.
@@ -23,28 +23,6 @@ class Demo final : public pxe::Engine {
 public:
 	Demo(int width, int height, const std::string &title, int pixelSize = 1) :
 		Engine(width, height, title, pixelSize) {}
-
-	void drawLine(int x0, int y0, int x1, int y1, int r, int g, int b) {
-		int x = x0, y = y0;
-		int dx = std::abs(x1 - x), dy = std::abs(y1 - y);
-		int sx = (x < x1) ? 1 : -1, sy = (y < y1) ? 1 : -1;
-		int err = dx - dy;
-
-		while (true) {
-			drawPixel(x, y, r, g, b);
-			if (x == x1 && y == y1)
-				break;
-			int e2 = 2 * err;
-			if (e2 > -dy) {
-				err -= dy;
-				x += sx;
-			}
-			if (e2 < dx) {
-				err += dx;
-				y += sy;
-			}
-		}
-	}
 
 	void onSetup() override {}
 
